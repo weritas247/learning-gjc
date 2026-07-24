@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="중급자를 위한 가재코드 워크플로 가이드" />
+  <title>가재코드 중급 워크플로 — 위키 & 블로그</title>
+  <style>
+    :root { --bg:#f7f5f1; --paper:#fff; --ink:#202124; --muted:#64686f; --line:#ddd9d1; --red:#c73531; --red-soft:#fff0ed; --blue:#2867a9; --blue-soft:#eef6fd; --code:#20242b; --green:#25734f; --max:1260px; }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.78 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif} a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline} code{font-family:"SFMono-Regular",Consolas,monospace;background:#f0eee9;border-radius:4px;padding:.13em .34em;font-size:.88em;word-break:break-word} pre{margin:15px 0;overflow:auto;border-radius:8px;background:var(--code);padding:17px 18px;color:#edf0f4;font:13px/1.72 "SFMono-Regular",Consolas,monospace}pre code{padding:0;background:transparent;color:inherit;word-break:normal}
+    .topbar{height:58px;background:#26272b;color:#fff;border-bottom:3px solid var(--red);display:flex;align-items:center}.topbar-inner{width:min(var(--max),calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:850;letter-spacing:-.035em;color:#fff;font-size:1.04rem}.brand span{color:#fc8b84}.top-meta{color:#c2c5ca;font-size:.82rem}.top-meta b{color:white}.layout{width:min(var(--max),calc(100% - 40px));margin:0 auto;display:grid;grid-template-columns:244px minmax(0,780px) 210px;gap:34px}.sidebar{position:sticky;top:24px;align-self:start;padding:32px 0}.sidebar .mark{display:flex;gap:9px;align-items:center;color:var(--red);font-weight:900;font-size:.89rem;letter-spacing:.05em;text-transform:uppercase}.sidebar nav{margin-top:18px;border-left:1px solid var(--line)}.sidebar a{display:block;border-left:2px solid transparent;color:var(--muted);padding:5px 8px 5px 13px;font-size:.9rem}.sidebar a:hover{border-left-color:var(--red);color:var(--ink);text-decoration:none}.sidebar .sub{padding-left:24px;font-size:.82rem}.sidebar-note{margin-top:26px;padding:13px;border-radius:6px;background:#efece5;color:var(--muted);font-size:.78rem;line-height:1.55}.article{padding:54px 0 92px;min-width:0}.kicker{color:var(--red);font-size:.75rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase}.article h1{font-size:clamp(2.45rem,5vw,4.25rem);line-height:1.03;letter-spacing:-.07em;margin:10px 0 18px}.dek{font-size:1.14rem;line-height:1.72;color:var(--muted);margin:0 0 24px}.byline{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:11px 0;color:var(--muted);font-size:.82rem;display:flex;justify-content:space-between;gap:10px}.article h2{font-size:1.85rem;line-height:1.18;letter-spacing:-.05em;margin:59px 0 16px;padding-bottom:10px;border-bottom:2px solid var(--ink)}.article h3{font-size:1.2rem;letter-spacing:-.035em;margin:33px 0 8px}.article p{margin:13px 0}.article ul,.article ol{padding-left:23px}.article li{margin:6px 0}.lead-image{width:100%;border-radius:10px;margin:28px 0 9px;display:block;background:#e8ddd5}.caption{font-size:.76rem;color:var(--muted);margin:0 0 12px}.infobox{border:1px solid var(--line);background:#fff;border-radius:7px;padding:16px 18px;margin:23px 0}.infobox h3{margin:0 0 7px;font-size:1rem}.infobox p{font-size:.91rem;margin:0}.note{margin:25px 0;padding:15px 17px;border-left:4px solid var(--blue);background:var(--blue-soft);font-size:.93rem}.note.warn{border-left-color:var(--red);background:var(--red-soft)}.note strong{display:block;margin-bottom:2px}.wiki-table{width:100%;border-collapse:collapse;margin:18px 0 25px;font-size:.9rem}.wiki-table th{background:#ebe8e2;font-weight:800;text-align:left}.wiki-table th,.wiki-table td{border:1px solid var(--line);padding:10px 11px;vertical-align:top}.wiki-table td:first-child{font-weight:750;white-space:nowrap}.step{display:grid;grid-template-columns:40px 1fr;gap:13px;margin:22px 0}.step-no{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;font-weight:800;font-size:.8rem}.step h3{margin:2px 0 4px}.step p{margin:0;color:var(--muted);font-size:.94rem}.quote{margin:28px 0;padding:3px 0 3px 20px;border-left:3px solid var(--red);font-size:1.18rem;line-height:1.55;letter-spacing:-.02em}.rightbar{padding-top:132px;position:sticky;top:0;align-self:start}.right-card{border-top:2px solid var(--ink);padding-top:10px;margin-bottom:25px;font-size:.83rem}.right-card h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;margin:0 0 8px}.right-card p{margin:6px 0;color:var(--muted)}.tag{display:inline-block;background:#e9e7e1;border-radius:99px;padding:2px 8px;margin:2px 2px 0 0;font-size:.72rem;color:#555}.checklist{list-style:none;padding:0!important}.checklist li{position:relative;padding:8px 8px 8px 35px;background:#fff;border:1px solid var(--line);margin:7px 0;border-radius:6px}.checklist li::before{content:"✓";position:absolute;left:12px;color:var(--green);font-weight:900}.footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:.82rem}.footer-inner{width:min(var(--max),calc(100% - 40px));margin:auto}.mobile-toc{display:none}
+    @media(max-width:1050px){.layout{grid-template-columns:210px minmax(0,1fr)}.rightbar{display:none}}@media(max-width:720px){.top-meta{display:none}.layout{width:min(100% - 28px,var(--max));display:block}.sidebar{display:none}.mobile-toc{display:block;margin:18px 0 0;padding:11px 13px;border:1px solid var(--line);background:#fff;border-radius:7px;font-size:.85rem}.mobile-toc summary{font-weight:750;cursor:pointer}.mobile-toc a{display:block;padding:3px 0}.article{padding-top:36px}.article h2{margin-top:43px}.byline{display:block}.lead-image{margin-top:20px}}
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="topbar-inner"><a class="brand" href="#top">GAJAE<span>-CODE</span> / FIELD NOTES</a><div class="top-meta">난이도: <b>중급</b> · 2026 워크플로 에디션</div></div></header>
+  <div class="layout" id="top">
+    <aside class="sidebar" aria-label="문서 목차">
+      <div class="mark">♋ Wiki index</div>
+      <nav><a href="#position">1. 가재코드의 자리</a><a href="#loop">2. 작업 루프 만들기</a><a class="sub" href="#before-change">변경 전 루프</a><a class="sub" href="#after-change">변경 후 루프</a><a href="#commands">3. 명령어 레퍼런스</a><a href="#scenarios">4. 실전 시나리오</a><a href="#models">5. 모델·세션 운영</a><a href="#anti-patterns">6. 흔한 실패 패턴</a><a href="#template">7. 중급자 프롬프트 템플릿</a><a href="#closing">마무리</a></nav>
+      <div class="sidebar-note">이 글은 가재코드의 기본 워크플로를 이미 한 번 사용해 본 개발자를 위한 문서입니다. 명령보다 <b>언제 멈추고, 무엇을 검증할지</b>에 초점을 둡니다.</div>
+    </aside>
+    <main class="article">
+      <div class="kicker">Practical guide · wiki × blog</div>
+      <h1>가재코드를<br />“실행기”가 아니라<br /><span style="color:var(--red)">작업 시스템</span>으로 쓰기</h1>
+      <p class="dek">중급 단계의 차이는 에이전트에게 더 긴 프롬프트를 주는 데 있지 않습니다. 변경 전에는 불확실성을 줄이고, 변경 중에는 범위를 통제하며, 변경 후에는 사람이 검토 가능한 증거를 남기는 데 있습니다.</p>
+      <div class="byline"><span>작성: Gajae-Code Guide Desk</span><span>읽는 시간: 약 12분 · 대상: 웹·iOS·Android·프로토타입 개발자</span></div>
+      <details class="mobile-toc"><summary>목차 펼치기</summary><a href="#position">가재코드의 자리</a><a href="#loop">작업 루프</a><a href="#commands">명령어 레퍼런스</a><a href="#scenarios">실전 시나리오</a><a href="#models">모델·세션 운영</a><a href="#template">프롬프트 템플릿</a></details>
+      <img class="lead-image" src="https://raw.githubusercontent.com/Yeachan-Heo/gajae-code/main/assets/hero.png" alt="가재코드 에이전트 작업 장면" />
+      <p class="caption">가재코드는 특정 에디터나 에이전트를 대체하는 숨은 확장 기능이 아니라, 선택한 저장소·워크트리 곁에서 실행하는 독립적인 작업 레이어다.</p>
+
+      <section id="position"><h2>1. 가재코드의 자리: 모델과 저장소 사이</h2>
+        <p>가재코드는 모델을 고르는 도구이기도 하고 터미널 에이전트이기도 하지만, 실제 강점은 그 둘 사이에 <b>작업 규율</b>을 놓는 데 있습니다. “코드 만들어줘”라는 한 번의 요청을, 요구사항·계획·실행·검증이라는 이어지는 기록으로 바꿉니다.</p>
+        <table class="wiki-table"><thead><tr><th>레이어</th><th>가재코드가 맡는 일</th><th>개발자가 끝까지 맡는 일</th></tr></thead><tbody><tr><td>의도</td><td>질문을 통해 요구와 비목표를 문서화</td><td>제품 판단, 우선순위, 승인</td></tr><tr><td>계획</td><td>영향 범위와 검증 순서를 드러냄</td><td>계획의 트레이드오프 결정</td></tr><tr><td>실행</td><td>도구 호출, 코드 변경, 목표 추적</td><td>위험한 변경의 경계 설정</td></tr><tr><td>검증</td><td>테스트·diff·근거를 수집</td><td>릴리스/머지의 최종 판단</td></tr></tbody></table>
+        <div class="quote">“좋은 에이전트 세션은 답변이 길어서가 아니라, 다음 사람이 왜 이 변경을 믿어도 되는지 알 수 있어서 좋다.”</div>
+        <div class="note warn"><strong>중급자 기준</strong>에이전트가 파일을 고쳤다는 사실은 완료 증거가 아닙니다. 기대 동작, 실행한 검증, 남은 리스크가 함께 있어야 완료입니다.</div>
+      </section>
+
+      <section id="loop"><h2>2. 매번 재사용하는 작업 루프</h2>
+        <p>모든 작업에 네 가지 스킬을 모두 쓸 필요는 없습니다. 핵심은 작업의 불확실성과 위험에 맞춰 <em>최소한의 게이트</em>를 두는 것입니다.</p>
+        <h3 id="before-change">변경 전: 질문 → 계획 → 승인</h3>
+        <div class="step"><div class="step-no">1</div><div><h3>작업을 분류한다</h3><p>단일 파일의 명확한 버그라면 바로 실행합니다. 제품 요구가 모호하거나 데이터·권한·여러 패키지가 얽히면 <code>deep-interview</code>부터 시작합니다.</p></div></div>
+        <div class="step"><div class="step-no">2</div><div><h3>완료 조건을 문장으로 만든다</h3><p>“온보딩 개선” 대신 “첫 실행 사용자에게만 3단계 노출, 건너뛰기 가능, 완료 이벤트 기록, VoiceOver 통과”처럼 관찰 가능한 조건을 남깁니다.</p></div></div>
+        <div class="step"><div class="step-no">3</div><div><h3>계획에 승인 지점을 둔다</h3><p><code>ralplan</code>으로 파일·데이터 변경·테스트·롤백을 검토한 뒤, 구현 시작을 명시적으로 승인합니다. 계획은 구현 허가가 아닙니다.</p></div></div>
+        <pre><code>gjc --tmux --worktree profile-notifications
+
+"알림 설정을 추가하고 싶다. 구현은 시작하지 말고,
+현재 설정 저장 방식·플랫폼별 권한·기존 분석 이벤트를 조사한 뒤
+결정이 필요한 질문과 완료 조건을 먼저 정리해줘."
+
+/skill:ralplan
+"합의된 완료 조건으로 영향 파일, 마이그레이션, 테스트, 롤백까지 포함한 계획을 작성해줘."</code></pre>
+        <h3 id="after-change">변경 후: 증거 → 검토 → 다음 세션</h3>
+        <p>완료 보고는 “끝났습니다”가 아니라 다음 네 가지를 가진 짧은 릴리스 노트여야 합니다.</p>
+        <ul><li><b>변경:</b> 사용자에게 달라진 동작과 핵심 파일</li><li><b>검증:</b> 실제 실행한 테스트·빌드·수동 확인</li><li><b>제한:</b> 실행하지 못한 테스트나 환경 제약</li><li><b>후속:</b> 배포 후 관찰할 지표 또는 별도 작업</li></ul>
+        <div class="infobox"><h3>💡 ultragoal은 언제 쓰나요?</h3><p>여러 세션에 걸치거나, 중간에 리뷰·수정·재검증이 필요한 작업에 사용합니다. 작은 수정에 과도한 목표 관리가 필요하진 않지만, “누가 무엇을 어떤 근거로 끝냈는가”가 중요한 프로젝트라면 큰 차이를 만듭니다.</p></div>
+      </section>
+
+      <section id="commands"><h2>3. 중급자가 자주 여는 명령어 레퍼런스</h2>
+        <p>가재코드는 대화형 화면 안의 슬래시 워크플로와, 셸에서 호출하는 CLI를 함께 씁니다. 아래는 일상적으로 반복되는 명령만 추렸습니다.</p>
+        <table class="wiki-table"><thead><tr><th>명령</th><th>언제 쓰나</th><th>중급자 메모</th></tr></thead><tbody>
+          <tr><td><code>gjc</code></td><td>현재 프로젝트에서 대화형 세션 시작</td><td>시작 요청에 “먼저 조사, 수정 전 계획”을 넣으면 섣부른 변경을 줄인다.</td></tr>
+          <tr><td><code>gjc --tmux</code></td><td>오래 가는 작업</td><td>세션이 끊겨도 tmux 맥락을 유지하기 좋다.</td></tr>
+          <tr><td><code>gjc --tmux --worktree 이름</code></td><td>위험하거나 리뷰 가능한 변경</td><td>현재 브랜치를 보호하는 가장 쉬운 기본값이다.</td></tr>
+          <tr><td><code>gjc -p "…"</code></td><td>한 번 분석하고 종료</td><td>CI 보조, 코드베이스 조사, PR 전 체크에 알맞다.</td></tr>
+          <tr><td><code>gjc --continue "…"</code></td><td>마지막 작업 이어가기</td><td>새 맥락을 재설명하기보다 변경된 조건만 덧붙인다.</td></tr>
+          <tr><td><code>gjc skills list</code></td><td>번들 워크플로 확인</td><td>기본 스킬을 가정하지 말고 설치·내용을 먼저 확인한다.</td></tr>
+          <tr><td><code>gjc skills read ralplan</code></td><td>스킬의 정확한 계약 확인</td><td>팀의 작업 규칙과 충돌하는지 읽어본다.</td></tr>
+          <tr><td><code>gjc --list-models</code></td><td>현재 인증된 모델 확인</td><td>실패가 모델 미지원/인증 때문인지 초기에 구별한다.</td></tr>
+        </tbody></table>
+        <h3>기본 스킬 설치와 확인</h3>
+        <pre><code># 기본 워크플로 파일의 상태만 점검
+gjc setup defaults --check
+
+# 누락된 기본 워크플로 설치 (기존 로컬 파일은 보존)
+gjc setup defaults
+
+# 한 번 처리하고 결과만 출력
+gjc -p "현재 diff를 검토해. 고쳐야 할 문제만 심각도 순으로 알려줘."</code></pre>
+        <div class="note"><strong>명령어보다 중요한 운영 규칙</strong><code>--worktree</code>는 파일 경로가 아니라 가재코드가 만들 형제 워크트리의 브랜치형 이름을 받습니다. 이미 만든 워크트리라면 그 디렉터리로 이동한 뒤 <code>gjc</code>를 실행하세요.</div>
+      </section>
+
+      <section id="scenarios"><h2>4. 실전 시나리오: 속도와 신뢰를 같이 얻는 법</h2>
+        <h3>시나리오 A — 결제 오류를 고치는 웹앱 개발자</h3>
+        <p>결제 관련 이슈는 “버그가 보이는 화면”만 바꾸면 재발하기 쉽습니다. 웹훅, 멱등성, 상태 전이, 관찰 지표를 먼저 확인해야 합니다.</p>
+        <pre><code>gjc --tmux --worktree checkout-retry
+
+"간헐적인 중복 결제 보고를 조사해줘. 먼저 결제 생성, 웹훅 처리,
+재시도 정책, 주문 상태 전이를 읽고 재현 가설을 순위별로 제시해줘.
+코드는 아직 바꾸지 마. 각 가설의 확인 방법도 적어줘."</code></pre>
+        <p>이 요청의 좋은 점은 <b>수정 대상</b> 대신 <b>조사 대상과 가설 검증 방식</b>을 준다는 것입니다. 확인된 원인이 생긴 뒤에만 계획과 변경으로 넘어갑니다.</p>
+        <h3>시나리오 B — iOS/Android의 상태 복원 기능</h3>
+        <p>모바일 기능은 화면 하나보다 앱 수명주기와 데이터 경계가 어렵습니다. 플랫폼별 구현은 달라도 계획의 질문은 거의 같습니다.</p>
+        <table class="wiki-table"><thead><tr><th>질문</th><th>iOS 관점</th><th>Android 관점</th></tr></thead><tbody><tr><td>언제 복원?</td><td>scene/app lifecycle, 딥링크</td><td>process death, saved state, task 재개</td></tr><tr><td>무엇을 보존?</td><td>Navigation path, draft, 로그인 상태</td><td>back stack, ViewModel state, draft</td></tr><tr><td>어떻게 검증?</td><td>UI test, 실제 기기, 접근성</td><td>instrumentation test, 회전·백그라운드 전환</td></tr></tbody></table>
+        <pre><code>gjc --tmux --worktree draft-recovery
+"작성 중인 초안을 앱 재시작 뒤 복원하는 기능을 설계해줘.
+저장 주기, 민감 데이터, 계정 전환, 충돌, 앱 강제 종료를 포함해
+질문부터 정리하고 승인 전 계획을 만들어줘."</code></pre>
+        <h3>시나리오 C — 프로토타입을 제품으로 올리는 바이브코더</h3>
+        <p>프로토타입 단계에서 가재코드는 속도를 늦추는 관료제가 아니라, <b>만들지 않을 것</b>을 빨리 결정하는 장치입니다. MVP는 기능 목록보다 비목표 목록이 더 중요합니다.</p>
+        <pre><code>gjc --tmux --worktree customer-insights-mvp
+"고객 인터뷰 녹취를 요약하는 MVP를 3일 안에 데모해야 해.
+필수 사용자 흐름 하나, 데모 성공 기준, 비목표, 개인정보 위험,
+예상 비용을 질문해서 한 페이지 명세로 정리해줘.
+명세를 승인하기 전에는 구현하지 마."</code></pre>
+      </section>
+
+      <section id="models"><h2>5. 모델·세션 운영: 좋은 모델보다 좋은 분리</h2>
+        <p>깊은 모델 하나에 모든 역할을 몰아주기보다, 작업 성격을 구분하는 편이 대개 효과적입니다. 단, 모델 라우팅은 인증된 공급자·계정에서 실제로 쓸 수 있는 모델을 기준으로 정해야 합니다.</p>
+        <table class="wiki-table"><thead><tr><th>작업</th><th>운영 방법</th><th>예시</th></tr></thead><tbody><tr><td>정찰·요약</td><td>빠른 모델 또는 짧은 print 세션</td><td><code>gjc -p "src 구조를…"</code></td></tr><tr><td>설계·트레이드오프</td><td>충분한 추론 예산 + 계획 게이트</td><td><code>gjc --mpreset codex-medium</code></td></tr><tr><td>위험한 구현</td><td>워크트리 + 대화형 세션 + 테스트</td><td><code>gjc --tmux --worktree …</code></td></tr><tr><td>재검토</td><td>새 세션/다른 관점으로 diff만 검토</td><td><code>gjc -p "현재 diff를…"</code></td></tr></tbody></table>
+        <div class="note warn"><strong>주의: 이어가기와 독립 검토는 목적이 다릅니다.</strong><code>--continue</code>는 기존 맥락과 결정을 이어가는 데 좋습니다. 반대로 이미 작성한 코드를 비판적으로 보고 싶다면, 새 print 세션에서 spec·diff·테스트 결과만 주고 검토하게 하세요.</div>
+        <h3>세션을 작은 기록으로 관리하기</h3>
+        <ul><li>시작 메시지에 <b>목적·제약·완료 조건</b>을 넣는다.</li><li>중간에 제품 결정이 바뀌면 “이전 계획의 어떤 전제가 바뀌었는지”를 명시한다.</li><li>세션이 길어지면 <code>gjc --continue</code>로 맥락을 잇되, 핵심 결정은 짧게 다시 요약한다.</li><li>공유가 필요하면 세션 HTML 내보내기를 이용하되, 민감 정보가 포함되지 않았는지 먼저 검토한다.</li></ul>
+      </section>
+
+      <section id="anti-patterns"><h2>6. 흔한 실패 패턴과 교정법</h2>
+        <table class="wiki-table"><thead><tr><th>실패 패턴</th><th>왜 실패하나</th><th>교정 문장</th></tr></thead><tbody><tr><td>“이 기능 만들어줘”</td><td>범위·비목표·테스트가 없어 에이전트가 추측한다.</td><td>“먼저 결정이 필요한 항목과 완료 조건을 질문해줘.”</td></tr><tr><td>계획을 받은 즉시 구현</td><td>데이터 마이그레이션·권한·롤백을 사람이 확인하지 않는다.</td><td>“계획은 승인 대기 상태로 두고, 위험 항목을 먼저 표시해줘.”</td></tr><tr><td>메인 브랜치에서 긴 작업</td><td>실험과 긴급 수정이 서로 방해한다.</td><td>“<code>--worktree</code>로 별도 작업 공간에서 시작하자.”</td></tr><tr><td>“테스트해줘”로 끝냄</td><td>어떤 테스트를 했고 못 했는지 알 수 없다.</td><td>“실행 명령, 결과, 미실행 사유, 남은 리스크로 보고해줘.”</td></tr><tr><td>병렬 작업을 많이 띄움</td><td>의존성이 있는 변경이 충돌하고 통합 비용이 늘어난다.</td><td>“독립적인 조사와 테스트 보강만 병렬로 나눠줘.”</td></tr></tbody></table>
+      </section>
+
+      <section id="template"><h2>7. 복사해서 쓰는 중급자 프롬프트 템플릿</h2>
+        <p>좋은 프롬프트의 핵심은 상세한 구현 지시가 아니라, 의사결정 경계와 확인 방법을 명시하는 것입니다.</p>
+        <pre><code>목적: [사용자/비즈니스 관점에서 달성할 결과]
+
+현재 상황: [문제, 관련 기능, 관찰한 증상]
+제약: [건드리면 안 되는 것, 호환성, 일정, 보안/비용 조건]
+완료 조건:
+- [관찰 가능한 동작 1]
+- [관찰 가능한 동작 2]
+- [필수 테스트 또는 수동 검증]
+
+진행 방식:
+1) 먼저 관련 코드와 테스트를 조사해 요약한다.
+2) 불명확한 부분은 질문하고, 가정은 분리해서 적는다.
+3) 구현 전 영향 파일·리스크·검증법이 있는 계획을 제시한다.
+4) 내가 승인한 뒤에만 변경한다.
+5) 완료 시 변경, 검증 결과, 미실행 항목, 남은 리스크를 보고한다.</code></pre>
+        <ul class="checklist"><li>이 작업의 “하지 않을 것”을 한 줄이라도 썼는가?</li><li>정상 흐름뿐 아니라 실패·취소·재시도 상태를 언급했는가?</li><li>테스트가 없을 때 사람이 확인할 방법을 적었는가?</li><li>권한, 개인정보, 결제, 삭제, 배포처럼 되돌리기 어려운 지점이 있는가?</li></ul>
+      </section>
+
+      <section id="closing"><h2>마무리: 빠른 것은 빨리, 중요한 것은 분명하게</h2>
+        <p>가재코드의 워크플로는 모든 작업을 무겁게 만들자는 제안이 아닙니다. 작은 수정은 짧게 끝내고, 애매하거나 위험한 변경만 인터뷰·계획·증거로 다루자는 제안입니다. 익숙해지면 에이전트에게 맡기는 범위가 커질수록 오히려 통제감도 커집니다.</p>
+        <div class="infobox"><h3>다음 실험</h3><p>이번 주 작업 하나를 골라 <code>gjc --tmux --worktree 실험이름</code>으로 시작해 보세요. 구현 요청 전에 “계획을 승인 대기 상태로 작성해줘”라고 말하고, 완료 보고에 테스트 결과와 남은 리스크를 요구하면 됩니다.</p></div>
+      </section>
+    </main>
+    <aside class="rightbar" aria-label="문서 정보"><div class="right-card"><h2>문서 성격</h2><p>위키의 빠른 참조성 + 블로그의 맥락 있는 해설.</p><span class="tag">gjc</span><span class="tag">workflow</span><span class="tag">agents</span></div><div class="right-card"><h2>전제 지식</h2><p>프로젝트 폴더에서 <code>gjc</code>를 한 번 이상 실행해 본 독자.</p></div><div class="right-card"><h2>한 줄 요약</h2><p>계획은 승인 전에, 구현은 분리된 워크트리에서, 완료는 검증 근거와 함께.</p></div></aside>
+  </div>
+  <footer class="footer"><div class="footer-inner">Gajae-Code Intermediate Field Notes · 실제 명령과 모델 가용성은 <code>gjc --help</code>, <code>gjc --list-models</code>에서 현재 환경 기준으로 확인하세요.</div></footer>
+</body>
+</html>
