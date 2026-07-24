@@ -18,7 +18,7 @@ jobs:
       UPSTREAM: Yeachan-Heo/gajae-code
     steps:
       - name: Check out this guide repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Read the latest upstream release
         id: release
