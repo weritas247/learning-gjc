@@ -1,0 +1,73 @@
+name: Track upstream Gajae-Code releases
+
+on:
+  schedule:
+    # Daily 09:15 Asia/Seoul (00:15 UTC). Scheduled jobs may be delayed by GitHub.
+    - cron: "15 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-release-update-pr:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      UPSTREAM: Yeachan-Heo/gajae-code
+    steps:
+      - name: Check out this guide repository
+        uses: actions/checkout@v4
+
+      - name: Read the latest upstream release
+        id: release
+        shell: bash
+        run: |
+          set -euo pipefail
+          release="$(curl --fail --silent --show-error \
+            -H 'Accept: application/vnd.github+json' \
+            "https://api.github.com/repos/${UPSTREAM}/releases/latest")"
+          tag="$(jq -r '.tag_name' <<<"$release")"
+          previous="$(jq -r '.tag' upstream-release.json)"
+
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          if [[ "$tag" == "$previous" ]]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          jq --arg repo "$UPSTREAM" \
+             --arg tag "$tag" \
+             --arg name "$(jq -r '.name // .tag_name' <<<"$release")" \
+             --arg publishedAt "$(jq -r '.published_at' <<<"$release")" \
+             --arg url "$(jq -r '.html_url' <<<"$release")" \
+             --arg checkedAt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+             '{repository: $repo, tag: $tag, name: $name, publishedAt: $publishedAt, url: $url, checkedAt: $checkedAt}' \
+             > upstream-release.json
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Create a reviewable update pull request
+        if: steps.release.outputs.changed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch="automation/upstream-${{ steps.release.outputs.tag }}"
+          branch="${branch//[^a-zA-Z0-9._/-]/-}"
+
+          if gh pr list --head "$branch" --state all --json number --jq 'length > 0' | grep -qx true; then
+            echo "A pull request for this release already exists."
+            exit 0
+          fi
+
+          git switch -c "$branch"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add upstream-release.json
+          git commit -m "chore: track upstream ${{ steps.release.outputs.tag }} release"
+          git push --set-upstream origin "$branch"
+          gh pr create \
+            --base main \
+            --head "$branch" \
+            --title "chore: review Gajae-Code ${{ steps.release.outputs.tag }} release" \
+            --body "A new upstream Gajae-Code release was detected. This PR updates \`upstream-release.json\` with the release metadata. Review the upstream notes and update the learning guides if the public workflow or commands changed."
